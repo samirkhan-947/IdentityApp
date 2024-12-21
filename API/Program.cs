@@ -1,5 +1,6 @@
 using API.Data;
 using API.Models;
+using API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<Context>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<JwtServices>();
 
 builder.Services.AddIdentityCore<User>(options =>
 {
