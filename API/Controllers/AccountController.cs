@@ -23,6 +23,7 @@ namespace API.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
+        [HttpPost("Login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto login)
         {
             var user = await _userManager.FindByNameAsync(login.UserName);
@@ -48,7 +49,9 @@ namespace API.Controllers
         {
             if(await CheckEmailExistsAsync(register.Email))
             {
-                var userToAdd = new User
+                return BadRequest($"An existing account is using {register.Email}, email address. Please try with another email address");
+            }
+            var userToAdd = new User
                 {
                     FirstName = register.FirstName.ToLower(),
                     LastName = register.LastName.ToLower(),
@@ -56,7 +59,8 @@ namespace API.Controllers
                     Email = register.Email.ToLower(),
                     EmailConfirmed = true
                 };
-            }
+                var result = await _userManager.CreateAsync(userToAdd,register.Password);
+           
             return Ok("Your account has been created,you can login");
         }
 
