@@ -71,7 +71,7 @@ namespace API.Controllers
                 };
                 var result = await _userManager.CreateAsync(userToAdd,register.Password);
            
-            return Ok("Your account has been created,you can login");
+            return Ok(new JsonResult(new {title ="Account Created", message ="Your account has been created, you can login"}));
         }
 
         private async Task<bool> CheckEmailExistsAsync(string email)

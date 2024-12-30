@@ -27,6 +27,26 @@
   },
   {
     "ContainingType": "API.Controllers.AccountController",
+    "Method": "RefreshUserToken",
+    "RelativePath": "api/Account/RefreshUserToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "API.Dtos.Account.UserDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.AccountController",
     "Method": "Register",
     "RelativePath": "api/Account/Register",
     "HttpMethod": "POST",
